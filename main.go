@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"log"
+	"os"
 
 	"cloud.google.com/go/firestore"
 )
@@ -13,6 +14,9 @@ type State struct {
 }
 
 func main() {
+	if err := os.Setenv("FIRESTORE_EMULATOR_HOST", "192.168.58.2:8086"); err != nil {
+		log.Fatal(err)
+	}
 	ctx := context.Background()
 	client, err := firestore.NewClient(ctx, "test")
 	if err != nil {
