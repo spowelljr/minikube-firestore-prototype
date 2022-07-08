@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: firestore
+spec:
+  template:
+    metadata:
+      name: firestore-pod
+    spec:
+      containers:
+      - name: firestore
+        image: firestore
+        imagePullPolicy: Never
+      restartPolicy: Never
